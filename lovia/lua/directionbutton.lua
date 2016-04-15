@@ -1,4 +1,4 @@
-function newDirectionButton(x, y, key, rotation, onHeld, onRelease)
+function newDirectionButton(x, y, rotation, onHeld, onRelease)
 	local directionButton = {}
 
 	directionButton.x = x

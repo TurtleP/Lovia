@@ -23,21 +23,19 @@ function newDirectionalPad(x, y, ...)
 	directionPad.width = args[1]
 	directionPad.height = args[2]
 
-	local keys = args[3]
-
-	local onPush = args[4]
-	local onRelease = args[5]
+	local onPush = args[3]
+	local onRelease = args[4]
 
 	directionPad.buttons = {}
 
 	--Create four buttons for input
-	table.insert(directionPad.buttons, newDirectionButton(directionPad.x + (directionPad.width / 2) - 16, directionPad.y, keys[1], 0, onPush[1], onRelease[1]))
+	table.insert(directionPad.buttons, newDirectionButton(directionPad.x + (directionPad.width / 2) - 16, directionPad.y, 0, onPush[1], onRelease[1]))
 		
-	table.insert(directionPad.buttons, newDirectionButton(directionPad.x + (directionPad.width - 24), directionPad.y + directionPad.height / 2 - 8, keys[2], math.pi / 2, onPush[2], onRelease[2]))
+	table.insert(directionPad.buttons, newDirectionButton(directionPad.x + (directionPad.width - 24), directionPad.y + directionPad.height / 2 - 8, math.pi / 2, onPush[2], onRelease[2]))
 		
-	table.insert(directionPad.buttons, newDirectionButton(directionPad.x + (directionPad.width / 2) - 16, directionPad.y + directionPad.height - 16, keys[3], math.pi, onPush[3], onRelease[3]))
+	table.insert(directionPad.buttons, newDirectionButton(directionPad.x + (directionPad.width / 2) - 16, directionPad.y + directionPad.height - 16, math.pi, onPush[3], onRelease[3]))
 		
-	table.insert(directionPad.buttons, newDirectionButton(directionPad.x - 8, directionPad.y + directionPad.height / 2 - 8, keys[4], math.pi * 3 / 2, onPush[4], onRelease[4]))
+	table.insert(directionPad.buttons, newDirectionButton(directionPad.x - 8, directionPad.y + directionPad.height / 2 - 8, math.pi * 3 / 2, onPush[4], onRelease[4]))
 
 	function directionPad:draw()
 		love.graphics.setColor(255, 255, 255, 160)

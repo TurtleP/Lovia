@@ -15,7 +15,7 @@
 local path = ...
 local assetPath = path:gsub('%.', '/') .. '/assets/'
 
-require (path .. "/lua/dinput")
+require (path .. "/lua/directionalinput")
 require (path .. "/lua/directionbutton")
 require (path .. "/lua/virtualbutton")
 
@@ -25,7 +25,6 @@ local config =
 {
 	directionalPadWidth = 80,
 	directionalPadHeight = 80,
-	directionalButtonKeys = {"up", "right", "down", "left"},
 
 	touchReleasedColor =  {58, 55, 55, 160},
 	touchPressedColor = {197, 200, 200, 160},
@@ -38,7 +37,7 @@ directionalButtonGraphic = love.graphics.newImage(assetPath .. "directionalButto
 directionalButtonGraphicPressed = love.graphics.newImage(assetPath .. "directionalButtonPressed.png")
 
 function lovia.createDirectionalPad(x, y, ...)
-	return newDirectionalPad(x, y, config.directionalPadWidth, config.directionalPadHeight, config.directionalButtonKeys, ...)
+	return newDirectionalPad(x, y, config.directionalPadWidth, config.directionalPadHeight, ...)
 end
 
 function lovia.createVirtualButton(x, y, text, onHold, onRelease, ...)
