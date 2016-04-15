@@ -29,7 +29,8 @@ local config =
 	touchReleasedColor =  {58, 55, 55, 160},
 	touchPressedColor = {197, 200, 200, 160},
 
-	scale = 1
+	scalarX = 1,
+	scalarY = 1
 }
 
 directionalButtonGraphic = love.graphics.newImage(assetPath .. "directionalButton.png")
@@ -40,16 +41,17 @@ function lovia.createDirectionalPad(x, y, ...)
 	return newDirectionalPad(x, y, config.directionalPadWidth, config.directionalPadHeight, ...)
 end
 
-function lovia.createVirtualButton(x, y, text, onHold, onRelease, ...)
-	return newVirtualButton(x, y, text, config.touchReleasedColor, config.touchPressedColor, onHold, onRelease, ...)
+function lovia.createVirtualButton(x, y, text, ...)
+	return newVirtualButton(x, y, text, config.touchReleasedColor, config.touchPressedColor, ...)
 end
 
-function lovia.setScalar(scale)
-	config.scale = scale
+function lovia.setScalar(scalarX, scalarY)
+	config.scalarX = scalarX
+	config.scalarY = scalarY
 end
 
 function lovia.insideElement(x, y, width, height, xMouse, yMouse)
-	xMouse, yMouse = xMouse / config.scale, yMouse / config.scale
+	xMouse, yMouse = xMouse / config.scalarX, yMouse / config.scalarY
 
 	return (xMouse > x) and (xMouse < x + width) and (yMouse > y) and (yMouse < y + height)
 end

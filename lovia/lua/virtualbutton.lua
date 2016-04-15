@@ -5,10 +5,9 @@
 	Fancy stuff. Yeh.
 --]]
 
-function newVirtualButton(x, y, text, releasedColor, pressedColor, onHold, onRelease, ...)
+function newVirtualButton(x, y, text, releasedColor, pressedColor, ...)
 	local virtualbutton = {}
 
-	print(releasedColor, pressedColor)
 	virtualbutton.x = x
 	virtualbutton.y = y
 
@@ -17,12 +16,13 @@ function newVirtualButton(x, y, text, releasedColor, pressedColor, onHold, onRel
 	virtualbutton.width = 32
 	virtualbutton.height = 32
 
-	virtualbutton.onHold = onHold
-	virtualbutton.onRelease = onRelease
-
 	local options = {...}
+	
+	virtualbutton.onHold = options[1]
+	virtualbutton.onRelease = options[2]
 
-	for _, v in pairs(options) do
+
+	for _, v in pairs(options[3] or {}) do
 		if v == "onRelease" then
 			virtualbutton.onRelease = true
 		end
